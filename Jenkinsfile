@@ -1,5 +1,7 @@
-pipeline {
-    agent any
+node{
+    stage("Git clone"){
+        git credentialsId: '4a28b46d-ea2d-41ca-913b-141271836fac', url: 'https://github.com/nagasatishaws/nodeapp-docker-k8s.git' ,branch: 'master'
+    }
     
     stage('Build Docker Image'){
              sh "docker build . -t nagasatishdocker/nodeapp-docker-k8s ." 
